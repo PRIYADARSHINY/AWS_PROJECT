@@ -38,8 +38,8 @@ const cors = require('cors');
 const server = http.createServer();
 const io = socketIO(server);
 
-// Enable CORS using the cors middleware
-io.origins('*:*'); // Allows all origins and all paths
+// // Enable CORS using the cors middleware
+// io.origins('*:*'); // Allows all origins and all paths
 
 io.on('connection', (socket) => {
   console.log('A client connected');
@@ -48,6 +48,13 @@ io.on('connection', (socket) => {
     console.log('Received ping from client');
     socket.emit('pong');
   });
+  
+  // Create a CORS middleware and use it with the server
+const corsOptions = {
+  origin: '*',
+  methods: ['GET', 'POST'],
+};
+io.use(cors(corsOptions));
 
   socket.on('disconnect', () => {
     console.log('A client disconnected');
