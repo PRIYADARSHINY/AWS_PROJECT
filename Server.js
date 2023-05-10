@@ -1,11 +1,11 @@
 const http = require('http');
 const socketIO = require('socket.io');
-const cors = require('cors');
+// const cors = require('cors');
 
 const server = http.createServer();
 const io = socketIO(server);
 
-app.use(cors());
+// app.use(cors());
 
 io.on('connection', (socket) => {
   console.log('A client connected');
