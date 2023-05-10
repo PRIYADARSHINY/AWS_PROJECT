@@ -70,7 +70,7 @@ const cors = require('cors');
 const server = http.createServer();
 const io = socketIO(server, {
   cors: {
-    origin: "*",
+    origin: "http://192.168.1.3:8080",
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true
