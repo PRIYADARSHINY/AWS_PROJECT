@@ -1,9 +1,51 @@
+const http = require('http');
+const socketIO = require('socket.io');
+
+const server = http.createServer();
+// const io = socketIO(server);
+
+const io = socketIO(server, {
+  pingInterval: 2000, 
+  pingTimeout: 5000 // Custom ping timeout in milliseconds
+});
+
+io.on('connection', (socket) => {
+  console.log('A client connected');
+
+  socket.on('ping', () => {
+    console.log('Received ping from client');
+    socket.emit('pong');
+  });
+
+  socket.on('disconnect', () => {
+    console.log('A client disconnected');
+  });
+});
+
+server.listen(80, () => {
+  console.log('Server running on port 80');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const http = require('http');
 // const socketIO = require('socket.io');
 // const cors = require('cors');
 
 // const server = http.createServer();
 // const io = socketIO(server);
+
+
 
 // io.on('connection', (socket) => {
 //   console.log('A client connected');
@@ -63,38 +105,40 @@
 //   console.log('Server running on port 80');
 // });
 
-const http = require('http');
-const socketIO = require('socket.io');
-const cors = require('cors');
 
-const server = http.createServer();
-const io = socketIO(server, {
-  cors: {
-    origin: "http://192.168.1.3:8080",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true
-  }
-});
-// const io = socketIO(server);
+//=============Working code for local client socket==========================
+// const http = require('http');
+// const socketIO = require('socket.io');
+// const cors = require('cors');
+
+// const server = http.createServer();
+// const io = socketIO(server, {
+//   cors: {
+//     origin: "http://192.168.1.3:8080",
+//     methods: ["GET", "POST"],
+//     allowedHeaders: ["my-custom-header"],
+//     credentials: true
+//   }
+// });
+// // const io = socketIO(server);
 
 
-io.on('connection', (socket) => {
-  console.log('A client connected');
+// io.on('connection', (socket) => {
+//   console.log('A client connected');
 
-  socket.on('ping', () => {
-    console.log('Received ping from client');
-    socket.emit('pong');
-  });
+//   socket.on('ping', () => {
+//     console.log('Received ping from client');
+//     socket.emit('pong');
+//   });
 
-  socket.on('disconnect', () => {
-    console.log('A client disconnected');
-  });
-});
+//   socket.on('disconnect', () => {
+//     console.log('A client disconnected');
+//   });
+// });
 
-server.listen(80, () => {
-  console.log('Server running on port 80');
-});
+// server.listen(80, () => {
+//   console.log('Server running on port 80');
+// });
 
 
 
