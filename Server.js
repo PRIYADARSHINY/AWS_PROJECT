@@ -36,13 +36,8 @@ const socketIO = require('socket.io');
 const cors = require('cors');
 
 const server = http.createServer();
-const io = socketIO(server)(httpServer, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
-});
-
+const io = socketIO(server);
+io.set('origins', '*:*');
 
 io.on('connection', (socket) => {
   console.log('A client connected');
