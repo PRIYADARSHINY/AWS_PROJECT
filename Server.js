@@ -23,7 +23,7 @@ const corsOptions = {
   origin: '*',
   methods: ['GET', 'POST'],
 };
-io.origins(corsOptions.origin);
+// io.origins(corsOptions.origin);
 io.use(cors(corsOptions));
 
 server.listen(80, () => {
