@@ -13,7 +13,7 @@ io.on('connection', (socket) => {
   console.log('A client connected');
 
   socket.on('ping', (clientData) => {
-    console.log('Received ping from client');
+    console.log('Received ping from client', clientData);
     socket.emit('pong', clientData);
   });
 
