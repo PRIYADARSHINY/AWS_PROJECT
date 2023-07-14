@@ -12,10 +12,15 @@ const io = socketIO(server, {
 io.on('connection', (socket) => {
   console.log('A client connected');
 
-  socket.on('ping', (clientData) => {
-    console.log('Received ping from client', clientData);
-    socket.emit('pong', clientData);
+    socket.on('hi', () => {
+    console.log('Received ping from client');
+    socket.emit('hello');
   });
+
+  // socket.on('ping', (clientData) => {
+  //   console.log('Received ping from client', clientData);
+  //   socket.emit('pong', clientData);
+  // });
 
   socket.on('disconnect', () => {
     console.log('A client disconnected');
