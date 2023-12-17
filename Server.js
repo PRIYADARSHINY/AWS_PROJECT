@@ -3,7 +3,7 @@ const socketIO = require('socket.io');
 
 const server = http.createServer();
 const io = socketIO(server);
-
+let i = 1;
 // const io = socketIO(server, {
 //   pingInterval: 2000, 
 //   pingTimeout: 5000 // Custom ping timeout in milliseconds
@@ -18,13 +18,20 @@ io.on('connection', (socket) => {
   //   socket.emit('hello');
   // });
 
-  socket.on('Test', (clientData) => {
-    console.log('Received ping from client', clientData);
-    socket.emit('Test', clientData);
-  });
+  // socket.on('Test', (clientData) => {
+  //   console.log('Received ping from client', clientData);
+  //   socket.emit('Test', clientData);
+  // });
+
+  //Emit an event every 2.5 seconds
+  const intervalId = setInterval(() => {
+    socket.emit('TEST', 'Hello from Server:${i}');
+    i++;
+  }, 2500);
 
   socket.on('disconnect', () => {
     console.log('A client disconnected');
+    clearInterval(intervalId);
   });
 });
 
