@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
   //Emit an event every 2.5 seconds
   const intervalId = setInterval(() => {
     io.emit('TestAuto', i);
-    console.log("sent from server"+i);
+    console.log("sent from server: "+i);
     i++;
   }, 2500);
 
