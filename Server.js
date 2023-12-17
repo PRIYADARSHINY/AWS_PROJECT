@@ -18,14 +18,14 @@ io.on('connection', (socket) => {
   //   socket.emit('hello');
   // });
 
-  // socket.on('Test', (clientData) => {
-  //   console.log('Received ping from client', clientData);
-  //   socket.emit('Test', clientData);
-  // });
+  socket.on('Test', (clientData) => {
+    console.log('Received ping from client', clientData);
+    socket.emit('Test', clientData);
+  });
 
   //Emit an event every 2.5 seconds
   const intervalId = setInterval(() => {
-    socket.emit('TEST', 'Hello from Server:${i}');
+    socket.emit('TEST', i);
     i++;
   }, 2500);
 
