@@ -2,7 +2,7 @@ const http = require('http');
 const socketIO = require('socket.io');
 
 const server = http.createServer();
-const io = socketIO(server);
+// const io = socketIO(server);
 let i = 1;
 const io = socketIO(server, {
   pingInterval: 3000, 
