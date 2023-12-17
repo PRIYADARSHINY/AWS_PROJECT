@@ -20,12 +20,12 @@ io.on('connection', (socket) => {
 
   socket.on('Test', (clientData) => {
     console.log('Received ping from client', clientData);
-    socket.volatile.emit('Test', clientData);
+    socket.emit('Test', clientData);
   });
 
   //Emit an event every 2.5 seconds
   const intervalId = setInterval(() => {
-    socket.volatile.emit('TEST', i);
+    socket.emit('TEST', i);
     console.log("sent from server"+i);
     i++;
   }, 2500);
