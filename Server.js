@@ -2,12 +2,13 @@ const http = require('http');
 const socketIO = require('socket.io');
 
 const server = http.createServer();
-// const io = socketIO(server);
+const io = socketIO(server);
 
-const io = socketIO(server, {
-  pingInterval: 2000, 
-  pingTimeout: 5000 // Custom ping timeout in milliseconds
-});
+// const io = socketIO(server, {
+//   pingInterval: 2000, 
+//   pingTimeout: 5000 // Custom ping timeout in milliseconds
+// });
+
 
 io.on('connection', (socket) => {
   console.log('A client connected');
