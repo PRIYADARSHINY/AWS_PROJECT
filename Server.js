@@ -4,10 +4,10 @@ const socketIO = require('socket.io');
 const server = http.createServer();
 const io = socketIO(server);
 let i = 1;
-// const io = socketIO(server, {
-//   pingInterval: 2000, 
-//   pingTimeout: 5000 // Custom ping timeout in milliseconds
-// });
+const io = socketIO(server, {
+  pingInterval: 3000, 
+  pingTimeout: 6000 // Custom ping timeout in milliseconds
+});
 
 
 io.on('connection', (socket) => {
