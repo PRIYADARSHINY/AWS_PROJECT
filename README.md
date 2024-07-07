@@ -14,13 +14,19 @@ ps aux | grep node
 
 handinling cors externally: https://socket.io/docs/v3/handling-cors/
 
-> tmux session:
+tmux session:
 > sudo apt-get update
+> 
 > sudo apt-get install tmux
+> 
 > tmux new -s pingSession
+> 
 > node Server.js /sudo node Server.js
+> 
 > sudo NODE_ENV=production node Server.js >> log.txt &
+> 
 > exit by ctrl+b then d
+> 
 > Connecting back to tmux session: tmux attach -t pingSession
 
 
