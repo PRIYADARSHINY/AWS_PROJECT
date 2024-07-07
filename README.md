@@ -5,6 +5,7 @@ ssh need a cert key pair
 ssh -i <pem file name> ubuntu@ip (see aws ec2 connect properties for connection) - https://www.youtube.com/watch?v=qQ7XC9ytLyk
 
 > C:\Users\priya\OneDrive\Desktop\AWS_SSH>ssh -i Dandy_Socket_Server_keyPair.pem ubuntu@16.16.126.83
+> 
 > sudo su
 > 
 > /home/ubuntu/AWS_PROJECT# node Server.js
