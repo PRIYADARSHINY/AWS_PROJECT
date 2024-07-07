@@ -14,18 +14,14 @@ ps aux | grep node
 
 handinling cors externally: https://socket.io/docs/v3/handling-cors/
 
-tmux session:
-sudo apt-get update
-sudo apt-get install tmux
-
-tmux new -s pingSession
-
-node Server.js /sudo node Server.js
-sudo NODE_ENV=production node Server.js >> log.txt &
-
-exit by ctrl+b then d
-
-tmux attach -t pingSession
+> tmux session:
+> sudo apt-get update
+> sudo apt-get install tmux
+> tmux new -s pingSession
+> node Server.js /sudo node Server.js
+> sudo NODE_ENV=production node Server.js >> log.txt &
+> exit by ctrl+b then d
+> Connecting back to tmux session: tmux attach -t pingSession
 
 
 > curl "http://ec2-16-16-126-83.eu-north-1.compute.amazonaws.com/socket.io/?EIO=4&transport=polling"
