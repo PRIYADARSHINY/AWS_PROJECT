@@ -1,4 +1,4 @@
-==============Running a NOde server on AWS container
+==============Running a NODE server on AWS container
 
 SSH :
 ssh need a cert key pair
