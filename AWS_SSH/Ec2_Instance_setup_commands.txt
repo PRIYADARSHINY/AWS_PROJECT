@@ -1,0 +1,93 @@
+Instance setup commands:
+The following API calls will be used to launch your instance.
+
+
+API call: RunInstances
+The following input will be used in the SDK RunInstances request. Learn more 
+Any new security groups created by the security group requests in the sections below will be added to this input at launch time.
+
+
+{
+  "MaxCount": 1,
+  "MinCount": 1,
+  "ImageId": "ami-0cf13cb849b11b451",
+  "InstanceType": "t3.micro",
+  "KeyName": "Dandy_Socket_Server_keyPair",
+  "EbsOptimized": true,
+  "NetworkInterfaces": [
+    {
+      "DeviceIndex": 0,
+      "AssociatePublicIpAddress": true,
+      "Groups": [
+        "<groupId of the new security group created below>"
+      ]
+    }
+  ],
+  "TagSpecifications": [
+    {
+      "ResourceType": "instance",
+      "Tags": [
+        {
+          "Key": "Name",
+          "Value": "Dandy_Socket_Server"
+        }
+      ]
+    }
+  ],
+  "PrivateDnsNameOptions": {
+    "HostnameType": "ip-name",
+    "EnableResourceNameDnsARecord": true,
+    "EnableResourceNameDnsAAAARecord": false
+  }
+}
+
+-------------------------------
+New security group setup
+API call: CreateSecurityGroup
+The following input will be used in the CreateSecurityGroup request.
+
+{
+  "GroupName": "launch-wizard-1",
+  "Description": "launch-wizard-1 created 2023-05-10T13:09:22.603Z",
+  "VpcId": "vpc-0e90a41db58fa93a8"
+}
+
+---------------------------
+API call: AuthorizeSecurityGroupIngress
+The following input will be used in the AuthorizeSecurityGroupIngress request.
+
+{
+  "GroupId": "<groupId of the security group created above>",
+  "IpPermissions": [
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 22,
+      "ToPort": 22,
+      "IpRanges": [
+        {
+          "CidrIp": "0.0.0.0/0"
+        }
+      ]
+    },
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 80,
+      "ToPort": 80,
+      "IpRanges": [
+        {
+          "CidrIp": "0.0.0.0/0"
+        }
+      ]
+    },
+    {
+      "IpProtocol": "tcp",
+      "FromPort": 443,
+      "ToPort": 443,
+      "IpRanges": [
+        {
+          "CidrIp": "0.0.0.0/0"
+        }
+      ]
+    }
+  ]
+}
