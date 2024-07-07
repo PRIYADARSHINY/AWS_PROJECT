@@ -7,7 +7,7 @@ SSH :
 
 ps aux | grep node
 
-handinling cors externally: https://socket.io/docs/v3/handling-cors/
+handling cors externally: https://socket.io/docs/v3/handling-cors/
 
 tmux session:
 sudo apt-get update
